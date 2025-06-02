@@ -40,12 +40,6 @@ dependencies:
   webview_flutter: ^4.7.0
   http_parser: ^4.0.2
 
-flutter:
-  plugin:
-    platforms:
-      android:
-      ios:
-
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
