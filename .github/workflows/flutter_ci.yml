@@ -2,32 +2,27 @@ name: Flutter CI
 
 on:
   push:
-    branches: [main]
+    branches: [ main ]
   pull_request:
-    branches: [main]
+    branches: [ main ]
 
 jobs:
   build:
-    name: Build & Test Flutter App
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v3
 
       - name: Set up Flutter
         uses: subosito/flutter-action@v2
         with:
-          flutter-version: '3.29.3'  # Ganti sesuai versi Flutter kamu
+          flutter-version: '3.29.3'  # Sesuaikan dengan project kamu
 
       - name: Install dependencies
         run: flutter pub get
 
-      - name: Run analyzer (ignore warning)
-        run: flutter analyze || true
+      - name: Analyze (no fatal warnings)
+        run: flutter analyze --no-fatal-warnings
 
-      - name: Run unit tests (optional bypass)
-        run: flutter test || true
-
-      - name: Build APK (debug)
+      - name: Build APK
         run: flutter build apk --debug
